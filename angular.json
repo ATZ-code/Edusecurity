@@ -30,6 +30,8 @@
               }
             ],
             "styles": [
+              "src/styles/edusecurity.css",
+              "src/styles/jarvis.css",
               "src/styles.scss"
             ]
           },
@@ -38,8 +40,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "700kB",
+                  "maximumError": "1.2MB"
                 },
                 {
                   "type": "anyComponentStyle",

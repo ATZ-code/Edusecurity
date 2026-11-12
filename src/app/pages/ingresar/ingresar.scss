@@ -1,0 +1,28 @@
+.ingresar {
+  display: grid;
+  place-items: center;
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+.ingresar-card {
+  position: relative;
+  width: min(480px, 100%);
+  border: 1px solid var(--glass-line);
+  border-radius: 28px;
+  background: var(--card);
+}
+.ingresar-titulo {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  letter-spacing: -0.03em;
+  margin-top: 0.4rem;
+}
+.demo-cuentas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin-top: 0.5rem;
+}
+.ingresar .field input {
+  padding-left: 1rem;
+}

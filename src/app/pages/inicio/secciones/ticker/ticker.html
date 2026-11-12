@@ -1,0 +1,10 @@
+<div class="ticker s-dark" aria-label="Amenazas que aprenderás a detectar">
+  <div class="ticker-track">
+    @for (a of amenazas; track a.nombre) {
+      <span><em>{{ a.nombre }}</em> {{ a.detalle }}</span>
+    }
+    @for (a of amenazas; track a.nombre) {
+      <span aria-hidden="true"><em>{{ a.nombre }}</em> {{ a.detalle }}</span>
+    }
+  </div>
+</div>

@@ -1,4 +1,32 @@
-# Edusecurity
+# EduSecurity · Frontend (Angular 21, componentes standalone)
+
+Plataforma educativa de ciberseguridad para jóvenes, adultos y personas mayores. Proyecto formativo SENA.
+
+- **Diseño de referencia (v2):** `docs/diseno/index.html` (ábrelo en el navegador).
+- **Reparto del trabajo y forma de trabajar con Git:** [`docs/REPARTO.md`](docs/REPARTO.md).
+- **Contrato de JARVIS con el backend:** [`docs/jarvis-ia-service.md`](docs/jarvis-ia-service.md).
+
+```bash
+npm install
+npm start   # http://localhost:4200
+```
+
+Modo demo (sin backend): `estudiante@edusecurity.co`, `empresa@edusecurity.co` o `admin@edusecurity.co`, clave `Seguro2026!`, código 2FA `482913`.
+
+## Estructura
+
+```
+src/app/
+  core/        configuración del API, sesión (JWT, guardias por rol), accesibilidad, avisos
+  shared/      componentes reutilizables (mascota Prisma, avisos)
+  layout/      marco público: barra de lectura, menú, pie, panel de accesibilidad
+  pages/       una carpeta por pantalla (inicio y sus secciones, ingresar, jarvis, aprendizaje…)
+src/styles/    sistema de diseño (edusecurity.css) y estilos de JARVIS (jarvis.css)
+```
+
+---
+
+## Notas de Angular CLI
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.9.
 

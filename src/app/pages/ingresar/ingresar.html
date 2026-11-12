@@ -1,0 +1,79 @@
+<section class="wrap ingresar">
+  <div class="auth-main ingresar-card">
+    @if (paso() === 'datos') {
+      <div class="eyebrow">Acceso seguro</div>
+      <h1 class="ingresar-titulo">Iniciar sesión</h1>
+      <p class="auth-sub">
+        @if (areaEmpresa) { Para usar las herramientas empresariales de JARVIS necesitas una cuenta de empresa. }
+        @else { Entra con el correo y la contraseña de tu cuenta. }
+      </p>
+      <form class="auth-form" novalidate (submit)="entrar($event)">
+        <div class="field">
+          <label for="correo">Correo electrónico</label>
+          <div class="input-wrap">
+            <input id="correo" type="email" inputmode="email" autocomplete="username" autocapitalize="none" spellcheck="false"
+                   placeholder="tucorreo@ejemplo.com" [value]="correo()" (input)="correo.set(valor($event))"
+                   [attr.aria-invalid]="!!errorCorreo()" aria-describedby="msgCorreo" required>
+          </div>
+          <span class="field-msg" id="msgCorreo" aria-live="polite">{{ errorCorreo() }}</span>
+        </div>
+        <div class="field">
+          <label for="clave">Contraseña</label>
+          <div class="input-wrap">
+            <input id="clave" type="password" autocomplete="current-password" placeholder="Tu contraseña"
+                   [value]="clave()" (input)="clave.set(valor($event))"
+                   [attr.aria-invalid]="!!errorClave()" aria-describedby="msgClave" required>
+          </div>
+          <span class="field-msg" id="msgClave" aria-live="polite">{{ errorClave() }}</span>
+        </div>
+        @if (error()) {
+          <div class="alert err" role="alert"><span>{{ error() }}</span></div>
+        }
+        @if (bloqueo() > 0) {
+          <div class="alert lock" role="alert">
+            <span>Por tu seguridad bloqueamos el acceso después de varios intentos fallidos. Podrás intentarlo de nuevo en <b>{{ bloqueo() }} s</b>.</span>
+          </div>
+        }
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="enviando() || bloqueo() > 0">
+          {{ enviando() ? 'Verificando…' : 'Iniciar sesión' }}
+        </button>
+      </form>
+      @if (demo) {
+        <div class="demo">
+          <b>Modo de prueba.</b> Aún no está conectado al servidor. Clave para todos: <code>Seguro2026!</code>
+          <div class="demo-cuentas">
+            <button type="button" class="link-btn" (click)="rellenarDemo('estudiante@edusecurity.co')">Estudiante</button>
+            <button type="button" class="link-btn" (click)="rellenarDemo('empresa@edusecurity.co')">Empresa</button>
+            <button type="button" class="link-btn" (click)="rellenarDemo('admin@edusecurity.co')">Administrador (pide código)</button>
+          </div>
+        </div>
+      }
+    } @else {
+      <div class="eyebrow">Paso 2 de 2</div>
+      <h1 class="ingresar-titulo" tabindex="-1" #tituloCodigo>Confirma que eres tú</h1>
+      <p class="auth-sub">
+        Escribe el código de 6 números que enviamos a <b>{{ correo() }}</b>. Este código es solo para ti: no se lo des a nadie,
+        aunque diga ser de EduSecurity.
+      </p>
+      <form class="auth-form" novalidate (submit)="verificar($event)">
+        <div class="field">
+          <label for="codigo">Código de verificación</label>
+          <div class="input-wrap">
+            <input id="codigo" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6"
+                   [value]="codigo()" (input)="codigo.set(valor($event))">
+          </div>
+        </div>
+        @if (error()) {
+          <div class="alert err" role="alert"><span>{{ error() }}</span></div>
+        }
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="enviando()">
+          {{ enviando() ? 'Verificando…' : 'Verificar y entrar' }}
+        </button>
+        <button class="link-btn" type="button" style="justify-self: center" (click)="volver()">Volver</button>
+      </form>
+      @if (demo) {
+        <div class="demo">En modo de prueba el código es <code>482913</code>.</div>
+      }
+    }
+  </div>
+</section>

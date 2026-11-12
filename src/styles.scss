@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos globales propios del proyecto Angular.
+   El sistema de diseño completo está en src/styles/edusecurity.css (y JARVIS en jarvis.css).
+   Aquí solo van ajustes que no existían en la página de muestra. */
+
+/* El contenedor raíz de Angular no debe romper el fondo ni el layout */
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+
+/* Componentes de página: ocupan su bloque */
+app-layout-publico,
+app-inicio {
+  display: block;
+}
+
+/* Los componentes de layout son el propio elemento con estilo (sticky, franja, etc.) */
+app-navbar,
+app-prisma {
+  display: block;
+}
+
+/* Páginas sin héroe: dejan espacio para el menú fijo */
+main.bajo-nav {
+  padding-top: 96px;
+}
+
+app-prisma svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Marcador temporal de las secciones que aún no se han convertido (se borra al terminar) */
+.pendiente {
+  display: grid;
+  gap: 0.4rem;
+  place-items: center;
+  text-align: center;
+  min-height: 220px;
+  padding: 2rem;
+  border: 2px dashed var(--line, rgba(255, 255, 255, 0.2));
+  border-radius: 6px;
+  color: var(--muted, #9a9ca6);
+}
+.pendiente b {
+  color: var(--fg, #f2f1ee);
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 1.3rem;
+}
